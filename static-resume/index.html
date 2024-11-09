@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Builder</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- html2pdf.js library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.min.js"></script>
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <div class="resume-container" id="resume-content">
+        <!-- left-section -->
+        <div class="left-section">
+            <img src="profile.webp" alt="Profile picture" class="profile-picture">
+            <div class="objective">
+                <section id="career-objective">
+                    <h3 style="color: white;">Professional Profile</h3>
+                    <p style="text-align: justify; hyphens: auto;">As a highly dedicated and skilled professional, I am passionate about my work and possess a strong work ethic. I am confident in my abilities and eager to leverage my expertise to contribute meaningfully to a dynamic organization.</p>
+                </section>
+                <section id="certification">
+                    <h3 style="color: white;">Certifications</h3>
+                    <p><b>Artificial Intelligence Applied Computing:</b> From Governor House Karachi</p>
+                    <p><b>Cyber Security:</b> From Aptech Institute</p>
+                </section>
+           
+            </div>
+        </div>
+        <!-- Right section -->
+        <div class="right-section">
+            <h1>Static Interactive Resume</h1>
+            <!-- Personal information -->
+            <section id="personal-info">
+                <h3>Personal Information</h3>
+                <p><b>Name:</b> Syed Ali Hussaini</p>
+                <p><b>Phone:</b> 03452030307</p>
+                <p><b>Address:</b> Shahr-e-faisal karachi</p>
+                <p><b>Email:</b> <a href="mailto:syed210@gmail.com">syed210@gmail.com</a></p>
+                <p><b>LinkedIn:</b> <a href="https://www.linkedin.com/in/syed-ali-hussaini-84693b2a9" target="_blank">www.linkedin.com</a></p>
+            </section>
+            <!-- Education section -->
+            <section class="education">
+                <h3>Education</h3>
+                <p><b>Undergraduate:</b> BBA From Muhammad Ali Jinnah University (2021-2025)</p>
+                <p><b>Intermediate:</b> Pre-engineering From DJ Govt. Science College</p>
+                <p><b>Matric:</b> Science From Karachi Folk's School</p>
+            </section>
+           
+            <!-- Work experience -->
+            <section id="work-experience">
+                <h3>Work Experience</h3>
+                <p><b>Company:</b> Systems Limited</p>
+                <p><b>Role:</b> Frontend Developer</p>
+            </section>
+                  <!-- Skills -->
+                  <section id="skills">
+                    <h3 style="color: rgb(0, 0, 0);">Skills</h3>
+                    <ul style="text-align: left;">
+                        <li>MS Office</li>
+                        <li>HTML</li>
+                        <li>CSS</li>
+                        <li>Typescript</li>
+                        <li>Time Management</li>
+                    </ul>
+                </section>
+            <!-- Toggle Skills Button -->
+            <button id="toggle-skill"><b>Hide/Show Skills</b></button>
+            <!-- Download PDF Button -->
+            <button onclick="downloadPDF()">Download PDF</button>
+        </div>
+        <script>
+            function downloadPDF() {
+        // Step 1: Select the entire resume section
+        const element = document.getElementById("resume-content");
+
+        // Step 2: Select the download button to hide it temporarily
+        const downloadButton = document.querySelector("button[onclick='downloadPDF()']");
+        
+        // Step 3: Hide the download button before creating the PDF
+        downloadButton.style.display = "none";
+
+        // Step 4: Generate the PDF using the html2pdf library
+        html2pdf(element, {
+            margin: 1,
+            filename: 'Resume_Syed_Ali_Hussaini.pdf',
+            image: { type: 'jpeg', quality: 0.98 },
+            html2canvas: { scale: 2 },
+            jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' }
+        }).then(() => {
+            // Step 5: Show the download button again after the PDF is generated
+            downloadButton.style.display = "block";
+        });
+    }
+        </script>
+    </div>
+    
+
+</body>
+</html>
